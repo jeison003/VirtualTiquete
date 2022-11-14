@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,14 +42,14 @@
               Iniciar sesion
             </div>
             <div class="card-body">
-              <form>
+              <form  method="post" action ="../negocio/funciones/logear.php">
                 <div class="mb-3 text-center text-white fs-5 fw-bold">
                   <label for="exampleInputEmail1" class="form-label ">Codigo</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
+                  <input name="Codigo" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>  
                 <div class="mb-3 text-center text-white fs-5 fw-bold">
                   <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input name="Contraseña" type="password" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">
                   <div class="col-4 d-grid gap-2 mx-auto">
