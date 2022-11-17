@@ -4,15 +4,15 @@ class Usuario{
     
     public $id_usuario;
     public $Codigo;
-    public $Contraseña;
+    public $Contrasenia;
     public $Rol;
 
 
-    public function __construct($id_usuario,$Codigo,$Contraseña,$Rol){
+    public function __construct($id_usuario,$Codigo,$Contrasenia,$Rol){
 
         $this->id_usuario   = $id_usuario;
         $this->Codigo       = $Codigo;
-        $this->Contraseña   = $Contraseña;
+        $this->Contrasenia   = $Contrasenia;
         $this->Rol          = $Rol;
     }
 
@@ -26,8 +26,8 @@ class Usuario{
         return $this->Codigo;
     }
 
-    public function getContraseña(){
-        return $this->Contraseña;
+    public function getContrasenia(){
+        return $this->Contrasenia;
     }
 
     public function getRol(){
@@ -46,8 +46,8 @@ class Usuario{
         return $this;
     }
 
-    public function setContraseña($Contraseña){
-        $this->Contraseña=$Contraseña;
+    public function setContrasenia($Contrasenia){
+        $this->Contrasenia=$Contrasenia;
         return $this;
     }
 

@@ -5,17 +5,16 @@ require_once(__DIR__."/../entidades/Usuario.php");
 
 class accessusuario{
      //verifica que el usuario esté registrado
-     public function autenticarUsuario($Codigo, $Contraseña){
+     public function autenticarUsuario($Codigo, $Contrasenia){
         $BDD     = new conexion();
         $usuario = NULL;
-        $tablaResultados= $BDD->ejecutarConsulta("SELECT * FROM usuario WHERE Codigo= :Codigo AND Contraseña= :Contraseña",
-        array(':Codigo'=>$Codigo,'Contraseña:'=>$Contraseña));
+        $tablaResultados= $BDD->ejecutarConsulta("SELECT * FROM usuario WHERE Codigo =? AND Contrasenia =?", array($Codigo,$Contrasenia));
         if(count($tablaResultados)==1){//sí encontró el usuario
             foreach($tablaResultados as $i => $valor){
                 $usuario = new Usuario(
                     $tablaResultados[$i]["Id_usuario"],
                     $tablaResultados[$i]["Codigo"],
-                    $tablaResultados[$i]["Contraseña"],
+                    $tablaResultados[$i]["Contrasenia"],
                     $tablaResultados[$i]["Rol"]
                 );
             }    
@@ -36,7 +35,7 @@ class accessusuario{
                 $usuario = new Usuario( // se crea un usuario por cada fila de la tabla
                     $tablaResultados[$i]["Id_usuario"],
                     $tablaResultados[$i]["Codigo"],
-                    $tablaResultados[$i]["Contraseña"],
+                    $tablaResultados[$i]["Contrasenia"],
                     $tablaResultados[$i]["Rol"]
                 );
                 array_push($usuarios,$usuario);
@@ -49,12 +48,12 @@ class accessusuario{
     public function BuscarUsuarioPorCodigo($Codigo){
         $BDD     = new conexion();
         $usuario = NULL;
-        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM usuario WHERE Codigo= :Codigo",array(':Codigo'=>$Codigo));
+        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM usuario WHERE Codigo= ?",array($Codigo));
         if(count($tablaResultados)==1){
             $usario = new Usuario(
                 $tablaResultados[0]["Id_isuario"],
                 $tablaResultados[0]["Codigo"],
-                $tablaResultados[0]["Contraseña"],
+                $tablaResultados[0]["Contrasenia"],
                 $tablaResultados[0]["Rol"]
             );
         }

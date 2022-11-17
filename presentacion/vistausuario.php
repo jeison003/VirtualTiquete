@@ -1,3 +1,12 @@
+<?php
+
+    session_start();
+    if (!isset($_SESSION['CODIGO'])) {
+        header("Location: login.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +26,10 @@
     <header id="indice">
         <h2>Tu fila virtual unimagdalena</h2>
         <div id="cerrar-sesion">
-            <p>Cerrar sesion</p>
+            <a class="navbar-brand text-white text-decoration-underline fs-6" href="login.php">Cerrar sesion</a>
         </div>
         <div id="logo">
-            <img src="./src/logo.png"
+            <img src="./src/logo.png">
         </div>
     </header>
     <div id="todo">
@@ -33,7 +42,7 @@
                 </div>
                 <div id="cuadro-info">
                     <div class="texto1">
-                        <p>Codigo:</p>
+                        <p>Codigo: <?php echo $_SESSION['CODIGO'];?></p>
                     </div>
                     <div class="texto2">
                         <p>Dias:</p>
