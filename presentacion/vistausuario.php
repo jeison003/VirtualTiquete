@@ -3,6 +3,8 @@
     session_start();
     if (!isset($_SESSION['CODIGO'])) {
         header("Location: login.php");
+    }else{
+        session_destroy();
     }
 
 ?>
@@ -42,7 +44,7 @@
                 </div>
                 <div id="cuadro-info">
                     <div class="texto1">
-                        <p>Codigo: <?php echo $_SESSION['CODIGO'];?></p>
+                        <p>Codigo: <?php echo $_SESSION['CODIGO']; ?></p>
                     </div>
                     <div class="texto2">
                         <p>Dias:</p>

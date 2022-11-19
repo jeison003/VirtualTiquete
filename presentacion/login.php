@@ -24,7 +24,6 @@
         <p class="text-white fs-5">Tu fila virtual UNIMAG</p>
         <div class="col-sm-8"></div>
         <div class="col">
-          <a class="navbar-brand text-white text-decoration-underline fs-6" href="#"> cerrar sesion</a>
         </div>
         <img src="../presentacion/img/Escudo_unimag.png" alt="Escudo Unimagdalena" width="110" height="80"
           class="d-inline-block align-text-top">
