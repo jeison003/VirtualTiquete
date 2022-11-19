@@ -19,63 +19,62 @@
         <p class="text-white fs-5">Tu fila virtual UNIMAG</p>
         <div class="col-sm-8"></div>
         <div class="col">
-        <a class="navbar-brand text-white text-decoration-underline fs-6" 
-          href="login.php">Cerrar sesion</a>        
+          <a class="navbar-brand text-white text-decoration-underline fs-6" href="login.php">Cerrar sesion</a>
         </div>
         <img src="../presentacion/img/Escudo_unimag.png" alt="Escudo Unimagdalena" width="110" height="80"
           class="d-inline-block align-text-top">
       </div>
     </nav>
     <br>
-    <div class="container-fluid py-5 my-5">
-      <div class="card" style="background-color: #758ea4;">
-        <div class="card-header text-white fs-4 fw-bold text-center" style="background-color: #0b5386;">
-          Administrar tiquete virtual
-        </div>
-        <div class="card-body">
-          <h5 class="card-title text-center text-white fs-6 fw-bold " style="background-color: #0b5386;">Codigo del
-            turno actual: <p id="codigoActual"></p>
-          </h5>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Turno actual:</h5>
-                  <p class="card-text fs-1 text-center" id="turnoActual">0</p>
+    <div class="container py-5 my-4">
+      <div class="row">
+        <div class=" col-sm-3"></div>
+        <div class=" col-sm-6">
+          <div class="card" style="background-color: #758ea4;">
+            <div class="card-header text-white fs-4 fw-bold text-center" style="background-color: #0b5386;">
+              Administrar tiquete virtual
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center text-white fs-6 fw-bold " style="background-color: #0b5386;">Codigo del
+                turno actual: <p id="codigoActual"></p>
+              </h5>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Turno actual:</h5>
+                      <p class="card-text fs-1 text-center" id="turnoActual">0</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Total recibidos:</h5>
+                      <p class="card-text fs-1 text-center" id="totalReci">0</p>
+
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Total recibidos:</h5>
-                  <p class="card-text fs-1 text-center" id="totalReci">0</p>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">
 
+                <div class="col-4 d-grid gap-2 mx-auto">
+                  <button class="btn btn-success" type="button" id="recibido">Recibido</button>
+                </div>
+                <div class="col-4 col-4 d-grid gap-2 mx-auto">
+                  <button class="btn btn-warning text-white" type="button" id="saltarTurno">Saltar turno </button>
+                </div>
+                <div class="col-4 col-4 d-grid gap-2 mx-auto">
+                  <button class="btn btn-danger" type="button" id="guardarReiniciar">Guardar y reiniciar</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">
-
-            <div class="col-4 d-grid gap-2 mx-auto">
-              <button class="btn btn-success" type="button" id="recibido">Recibido</button>
-            </div>
-            <div class="col-4 col-4 d-grid gap-2 mx-auto">
-              <button class="btn btn-warning text-white" type="button" id="saltarTurno">Saltar turno </button>
-            </div>
-
-
-            <div class="col-4 col-4 d-grid gap-2 mx-auto">
-              <button class="btn btn-danger" type="button" id="guardarReiniciar">Guardar y reiniciar</button>
-            </div>
-
-
-          </div>
         </div>
+        <div class=" col-sm-3"></div>
       </div>
     </div>
-
-
 
     <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark" style="background-color: #0b5386;">
       <div class="container-fluid">
