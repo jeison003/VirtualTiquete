@@ -1,6 +1,7 @@
 <?php
 
 require_once("conexion.php");
+//require_once ($_SERVER['DOCUMENT_ROOT'] . '/VirtualTiquete/acceso_datos/accesoentidades/conexion.php');
 require_once(__DIR__."/../entidades/Usuario.php");
 
 class accessusuario{
@@ -15,7 +16,9 @@ class accessusuario{
                     $tablaResultados[$i]["Id_usuario"],
                     $tablaResultados[$i]["Codigo"],
                     $tablaResultados[$i]["Contrasenia"],
-                    $tablaResultados[$i]["Rol"]
+                    $tablaResultados[$i]["Rol"],
+                    $tablaResultados[$i]["Nombre"],
+                    $tablaResultados[$i]["Apellido"]
                 );
             }    
         }
@@ -36,7 +39,9 @@ class accessusuario{
                     $tablaResultados[$i]["Id_usuario"],
                     $tablaResultados[$i]["Codigo"],
                     $tablaResultados[$i]["Contrasenia"],
-                    $tablaResultados[$i]["Rol"]
+                    $tablaResultados[$i]["Rol"],
+                    $tablaResultados[$i]["Nombre"],
+                    $tablaResultados[$i]["Apellido"]
                 );
                 array_push($usuarios,$usuario);
             }
@@ -54,9 +59,12 @@ class accessusuario{
                 $tablaResultados[0]["Id_isuario"],
                 $tablaResultados[0]["Codigo"],
                 $tablaResultados[0]["Contrasenia"],
-                $tablaResultados[0]["Rol"]
+                $tablaResultados[0]["Rol"],
+                $tablaResultados[0]["Nombre"],
+                $tablaResultados[0]["Apellido"]
             );
         }
+        
         return $usuario;
     }
 

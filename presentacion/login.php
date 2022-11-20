@@ -30,7 +30,7 @@
       </div>
     </nav>
 
-
+    <script>console.log("Hola")</script>
     <div class="container-fluid py-5 my-5">
 
       <div class="row">
@@ -44,11 +44,11 @@
               <form  method="post" action ="../negocio/funciones/logear.php">
                 <div class="mb-3 text-center text-white fs-5 fw-bold">
                   <label for="exampleInputEmail1" class="form-label ">Codigo</label>
-                  <input name="Codigo" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input name="Codigo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>  
                 <div class="mb-3 text-center text-white fs-5 fw-bold">
                   <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                  <input name="Contraseña" type="password" class="form-control" id="exampleInputPassword1">
+                  <input name="Contrasenia" type="password" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">
                   <div class="col-4 d-grid gap-2 mx-auto">

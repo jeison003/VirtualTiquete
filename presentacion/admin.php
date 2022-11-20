@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+    if (!isset($_SESSION['CODIGO'])) {
+        header("Location: login.php");
+    }else{
+        session_destroy();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

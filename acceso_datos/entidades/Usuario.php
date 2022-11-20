@@ -6,14 +6,17 @@ class Usuario{
     public $Codigo;
     public $Contrasenia;
     public $Rol;
+    public $Nombre;
+    public $Apellido;
 
-
-    public function __construct($id_usuario,$Codigo,$Contrasenia,$Rol){
+    public function __construct($id_usuario,$Codigo,$Contrasenia,$Rol,$Nombre,$Apellido){
 
         $this->id_usuario   = $id_usuario;
         $this->Codigo       = $Codigo;
         $this->Contrasenia   = $Contrasenia;
         $this->Rol          = $Rol;
+        $this->Nombre = $Nombre;
+        $this->Apellido = $Apellido;
     }
 
     //métodos GET
@@ -34,6 +37,13 @@ class Usuario{
         return $this->Rol;
     }
 
+    public function getNombre(){
+        return $this->Nombre;
+    }
+
+    public function getApellido(){
+        return $this->Apellido;
+    }
     //métodos SET
 
     public function setId_usuario($id_usuario){
@@ -56,4 +66,13 @@ class Usuario{
         return $this;
     }
 
+    public function setNombre($Nombre){
+        $this->Nombre=$Nombre;
+        return $this;
+    }
+
+    public function setApellido($Apellido){
+        $this->Apellido=$Apellido;
+        return $this;
+    }
 }
