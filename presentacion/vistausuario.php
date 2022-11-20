@@ -16,7 +16,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrador</title>
+  <title>Usuario</title>
   <link rel="stylesheet" href="../presentacion/boostrap/css/bootstrap.min.css">
   <style>
 
@@ -46,7 +46,7 @@
               Tiquete virtual
             </div>
             <div class="card-body">
-              <h5 class="card-title text-center text-white fs-6 fw-bold " style="background-color: #0b5386;">Dia de hoy:
+              <h5 class="card-title text-center text-white fs-6 fw-bold " style="background-color: #0b5386;">Dia de hoy: <?php echo $_SESSION['DIAHOY'];?>
               </h5>
               <div class="row">
                 <div class="col-sm-6">

@@ -11,10 +11,14 @@ $Contrasenia = $_POST['Contrasenia'];
 
 $usuario = autenticarUsuario($Codigo,$Contrasenia);
 
+$dias = array("domingo","lunes","martes","miércoles","jueves","viernes","sábado");
+$fechaActual = $dias[date("w")];
+$fechaActual = ucfirst($fechaActual);
+
 if($usuario!=NULL){
     $_SESSION['CODIGO'] = $usuario->getCodigo();
     $_SESSION['NOMBRE'] = $usuario->getNombre();
-    $_SESSION['APELLIDO'] = $usuario->getApellido();
+    $_SESSION['DIAHOY'] = $fechaActual;
 
     if($usuario->getRol()=='admin'){
         header("location: ../../presentacion/admin.php");
