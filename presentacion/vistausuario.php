@@ -59,7 +59,7 @@
                   </div>
                 </div>
                 <div class="col-sm-6">
-                <h5 class="card-title text-white">Dia :</h5>
+                <h5 class="card-title text-white">Dia: <?php echo ($_SESSION['DIA1']); ?> - <?php echo ($_SESSION['DIA2']);?></h5>
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Tu turno:</h5>

@@ -3,6 +3,7 @@
 session_start();
 //require_once("/../functionesentidades/funcionUsuario.php");
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/VirtualTiquete/negocio/funcionesentidades/funcionUsuario.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/VirtualTiquete/negocio/funcionesentidades/funcionReclamarAlmuerzo.php');
 
 //pedidos por método post en un formulario
 
@@ -15,10 +16,17 @@ $dias = array("domingo","lunes","martes","miércoles","jueves","viernes","sábad
 $fechaActual = $dias[date("w")];
 $fechaActual = ucfirst($fechaActual);
 
+
+$Almuerzo = buscarDiasUsuario($Codigo);
+$dia1 = $Almuerzo[0]->getDia_beneficiado();
+$dia2 = $Almuerzo[1]->getDia_beneficiado();
+
 if($usuario!=NULL){
     $_SESSION['CODIGO'] = $usuario->getCodigo();
     $_SESSION['NOMBRE'] = $usuario->getNombre();
     $_SESSION['DIAHOY'] = $fechaActual;
+    $_SESSION['DIA1'] = $dia1;
+    $_SESSION['DIA2'] = $dia2;
 
     if($usuario->getRol()=='admin'){
         header("location: ../../presentacion/admin.php");
