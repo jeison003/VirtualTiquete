@@ -7,7 +7,7 @@ require_once(__DIR__."/../entidades/Usuario.php");
 class accesoreclamaralmuerzo{
 
     public function listarDias(){
-        $BD = new conexion();
+        $BDD = new conexion();
         $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM reclamar_almuerzo_dia", NULL);
         if(count($tablaResultados)!=0){
             $diaReclamar  = NULL;

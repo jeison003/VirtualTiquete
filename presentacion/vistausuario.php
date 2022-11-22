@@ -59,7 +59,7 @@
                   </div>
                 </div>
                 <div class="col-sm-6">
-                <h5 class="card-title text-white">Dia: <?php echo ($_SESSION['DIA1']); ?> - <?php echo ($_SESSION['DIA2']);?></h5>
+                <h5 class="card-title text-white">Dias Habilitados: <?php echo ($_SESSION['DIA1']); ?> - <?php echo ($_SESSION['DIA2']);?></h5>
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Tu turno:</h5>
@@ -69,15 +69,25 @@
                   </div>
                 </div>
               </div>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">
-
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">                
+                  <div class="col-6 d-grid gap-2 mx-auto">
+                    <button class="btn btn-success"  type="button" id="pedirturno">Pedir Turno</button>
+                  </div>                                                      
+                <?php
+                  if(!isset($_SESSION['TIQUETE'])){//si tiene un turno asociado ese día no le permite pedir otro                  
+                ?>
+                  <div class="col-6 col-4 d-grid gap-2 mx-auto">
+                    <button class="btn btn-danger" disabled="disabled" type="button" id="bloqueado">Cancelar Turno</button>
+                  </div>
+                <?php
+                  }else{
+                ?>
                 <div class="col-6 d-grid gap-2 mx-auto">
-                  <button class="btn btn-success" type="button" id="recibido">Recibido</button>
-                </div>
-            
-                <div class="col-6 col-4 d-grid gap-2 mx-auto">
-                  <button class="btn btn-danger" type="button" id="guardarReiniciar">Guardar y reiniciar tiquetes</button>
-                </div>
+                      <button class="btn btn-danger" type="button" id="cancelarTurno">Cancelar Turno</button>
+                    </div>                      
+                <?php
+                  }
+                ?>
               </div>
             </div>
           </div>
