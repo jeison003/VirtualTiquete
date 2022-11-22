@@ -62,29 +62,37 @@
                 <h5 class="card-title text-white">Dias Habilitados: <?php echo ($_SESSION['DIA1']); ?> - <?php echo ($_SESSION['DIA2']);?></h5>
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">Tu turno:</h5>
-                      <p class="card-text fs-1 text-center" id="totalReci">0</p>
-
+                      <h5 class="card-title">Tu turno: </h5>
+                      <p class="card-text fs-1 text-center" id="turnousuario"><?php echo($_SESSION['TURNO']) ?></p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">                
-                  <div class="col-6 d-grid gap-2 mx-auto">
-                    <button class="btn btn-success"  type="button" id="pedirturno">Pedir Turno</button>
-                  </div>                                                      
+              <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">    
                 <?php
-                  if(!isset($_SESSION['TIQUETE'])){//si tiene un turno asociado ese día no le permite pedir otro                  
+                  if(!isset($_SESSION['TURNO'])){//si no tiene turno no le permite cancelarlo  y si lo tiene no le permite pedirlo
                 ?>
-                  <div class="col-6 col-4 d-grid gap-2 mx-auto">
-                    <button class="btn btn-danger" disabled="disabled" type="button" id="bloqueado">Cancelar Turno</button>
+                <div class="col-6 d-grid gap-2 mx-auto">
+                  <form action="../negocio/funciones/pedirtiquete.php" method="post">                       
+                    <button class="btn btn-success"  type="submit" id="pedirturno">Pedir Turno</button>
+                    <input name="CodigoUsuario" type="hidden" value="<?php echo $_SESSION['CODIGO']?>" > 
+                  </form>
+                </div> 
+                  <div class="col-6 col-4 d-grid gap-2 mx-auto">                                     
+                    <button class="btn btn-danger" disabled="disabled" type="button" id="bloqueado">Cancelar Turno</button>                 
                   </div>
                 <?php
                   }else{
-                ?>
+                ?>                            
+                <div class="col-6 d-grid gap-2 mx-auto">                                   
+                    <button class="btn btn-success" disabled="dis  type="submit" id="pedirturno">Pedir Turno</button>                    
+                </div>     
                 <div class="col-6 d-grid gap-2 mx-auto">
-                      <button class="btn btn-danger" type="button" id="cancelarTurno">Cancelar Turno</button>
-                    </div>                      
+                  <form action="../negocio/funciones/cancelartiquete.php" class="foract" method="post">     
+                    <input name="CodigoUsuario" type="hidden" value="<?php echo $_SESSION['CODIGO']?>" >
+                    <button class="btn btn-danger" type="submit" id="cancelarTurno">Cancelar Turno</button>
+                  </form>
+                </div>                                        
                 <?php
                   }
                 ?>

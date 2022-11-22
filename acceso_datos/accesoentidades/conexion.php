@@ -1,25 +1,5 @@
 <?php
-   /*
-   //creo las variables del servidor, usario y contraseña
-   $server = "localhost";
-   $user = "root";
-   $pass = "";
-   $db = "virtualtiquete";
-   
-   
-   //Establecemos la conexion con la bd
-   $conexion = new mysqli($this->server, $this->user, $this->pass, $this->db);
-   if($conexion->connect_errno){
-      die("Conexion fallida".$conexion->connect_errno);
-   } 
-   <script>
-      console.log("Conectado")
-   </script>
-   <?php
-   */ 
-//-------------------------------//----------------------//-----------//--------------------
 
-   //L- conexión con PDO.
 class conexion{
 
    private $conexion;
@@ -48,7 +28,19 @@ class conexion{
        return $tablaResultados;
    }else{
        return 0;
-   }    
-}
+   } 
+}   
+
+   public function ejecutarActualizacion($sql="", $valores=array()){
+        if($sql != ""){
+            $consulta=$this->conexion->prepare($sql);
+            $consulta->execute($valores);
+            $numero_filas_afectadas = $consulta->rowCount();
+            return $this->conexion->lastInsertId();
+            $this->conexion=null;
+        }else{
+            return 0;
+        }
+    }
 }
  

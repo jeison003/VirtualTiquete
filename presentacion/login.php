@@ -1,7 +1,9 @@
 <?php
 
   session_start();
-
+  if($_SESSION['INTENTO'] !=0){
+    echo '<script>alert("Usuario no encontrado")</script>';
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +46,7 @@
               <form  method="post" action ="../negocio/funciones/logear.php">
                 <div class="mb-3 text-center text-white fs-5 fw-bold">
                   <label for="exampleInputEmail1" class="form-label ">Codigo</label>
-                  <input name="Codigo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input name="Codigo" x-moz-errormessage="Error al validar credenciales"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>  
                 <div class="mb-3 text-center text-white fs-5 fw-bold">
                   <label for="exampleInputPassword1" class="form-label">Contraseña</label>

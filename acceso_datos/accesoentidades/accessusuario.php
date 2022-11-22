@@ -55,8 +55,8 @@ class accessusuario{
         $usuario = NULL;
         $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM usuario WHERE Codigo= ?",array($Codigo));
         if(count($tablaResultados)==1){
-            $usario = new Usuario(
-                $tablaResultados[0]["Id_isuario"],
+            $usuario = new Usuario(
+                $tablaResultados[0]["Id_usuario"],
                 $tablaResultados[0]["Codigo"],
                 $tablaResultados[0]["Contrasenia"],
                 $tablaResultados[0]["Rol"],
