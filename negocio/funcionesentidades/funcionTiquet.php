@@ -26,3 +26,10 @@ function crearTiquet($tiquet){
     return $newtiquete;
 }
 
+function eliminarTiquet($Id_tiquet){
+    $BDD = new accestiquet();
+    $BDD->eliminarTiquet($Id_tiquet);
+}
+
+
+
