@@ -30,7 +30,7 @@ class accestiquet{
 
     public function verTiquetesPorFecha($Fecha){
         $BDD = new conexion();
-        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM tiquet WHERE fecha = ?",array($Fecha));
+        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM tiquet WHERE fecha = ? AND Estado ",array($Fecha));
 
         if(count($tablaResultados)!=0){
             foreach($tablaResultados as $i => $valor){

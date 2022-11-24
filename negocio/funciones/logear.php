@@ -17,24 +17,25 @@ require_once(__DIR__."/../../acceso_datos/entidades/Tiquet.php");
 $Codigo      = $_POST['Codigo'];
 $Contrasenia = $_POST['Contrasenia'];
 $usuario = autenticarUsuario($Codigo,$Contrasenia);
+
 if(!isset($usuario)){    
     $intentos = 1;
-    $_SESSION['INTENTO'] = $intentos;
+    $_SESSION['INTENTO'] = $intentos;    
     header("location: ../../presentacion/login.php");    
 }
 
 
-//$dias = array("domingo","lunes","martes","miércoles","jueves","viernes","sábado");
 $fechaActual = date("Y-m-d");
-//$fechaActual = ucfirst($fechaActual);
+$tiquetesF  = verTiquetesPorFecha($fechaActual);
+
+if($usuario->getRol()=='user'){
 
 $Almuerzo = buscarDiasUsuario($Codigo);
-
 $dia1   = $Almuerzo[0]->getDia_beneficiado();
 //$dia2   = $Almuerzo[1]->getDia_beneficiado();
+}
 
 $tiquetesI  = verTiquetesPorId($usuario->getId_usuario());
-$tiquetesF  = verTiquetesPorFecha($fechaActual);
 
 
 if(!isset($tiquetesF) and !isset($tiquetesF) ){
@@ -47,13 +48,15 @@ if(!isset($tiquetesF) and !isset($tiquetesF) ){
     }
 }
 
-
 $_SESSION['CODIGO']   = $usuario->getCodigo();
 $_SESSION['NOMBRE']   = $usuario->getNombre();
-$_SESSION['DIAHOY']   = $fechaActual;
 $_SESSION['DIA1']     = $dia1;
 $_SESSION['DIA2']     = $dia2;
 $_SESSION['TURNO']    = $turnohoy;
+//}
+
+$_SESSION['DIAHOY']   = $fechaActual;
+$_SESSION['TURNOSHOY']= $tiquetesF;
 
 if($usuario->getRol()=='admin'){
     header("location: ../../presentacion/admin.php");

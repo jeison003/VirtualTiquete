@@ -54,7 +54,9 @@
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Turno actual:</h5>
-                      <p class="card-text fs-1 text-center" id="turnoActual">0</p>
+                      <?php if(isset($_SESSION['TURNOSHOY'])){ ?>
+                       <p class="card-text fs-1 text-center" id="turnoActual"><?php echo reset($_SESSION['TURNOSHOY'])->getTurno();?></p><?php }else{?>
+                       <p class="card-text fs-1 text-center" id="turnoActual">0</p><?php }?>                                                                  
                     </div>
                   </div>
                 </div>
