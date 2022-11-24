@@ -97,5 +97,34 @@ class accestiquet{
 
       return $resultado;
     }
+
+    public function saltarTiquet($tiquet){
+        $BDD = new conexion();
+        $sql = "INSERT INTO tiquet VALUES (NULL,:Id_usuario,:Turno,:Estado,:Fecha)";
+
+        $resultado = $BDD->ejecutarActualizacion($sql,array(
+            'Id_usuario'    => $tiquet->getIdusuario(),
+            'Turno'         => $tiquet->getTurno(),
+            'Estado'        => 'saltado',
+            'Fecha'         => $tiquet->getFecha()
+         )
+        );
+        return $resultado;
+    }
+
+    public function aceptarTiquet($tiquet){
+        $BDD = new conexion();
+        $sql = "INSERT INTO tiquet VALUES (NULL,:Id_usuario,:Turno,:Estado,:Fecha)";
+
+        $resultado = $BDD->ejecutarActualizacion($sql,array(
+            'Id_usuario'    => $tiquet->getIdusuario(),
+            'Turno'         => $tiquet->getTurno(),
+            'Estado'        => 'aceptado',
+            'Fecha'         => $tiquet->getFecha()
+         )
+        );
+        return $resultado;
+    }
+
 }
 

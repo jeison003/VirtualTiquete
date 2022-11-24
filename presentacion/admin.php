@@ -76,7 +76,9 @@
                   <button class="btn btn-success" type="button" id="recibido">Recibido</button>
                 </div>
                 <div class="col-4 col-4 d-grid gap-2 mx-auto">
-                  <button class="btn btn-warning text-white" type="button" id="saltarTurno">Saltar turno </button>
+                  <form action="../negocio/funciones/saltartiquete.php" method="post">
+                      <button class="btn btn-warning text-white" type="button" id="saltarTurno">Saltar turno </button>
+                    </form>
                 </div>
                 <div class="col-4 col-4 d-grid gap-2 mx-auto">
                   <button class="btn btn-danger" type="button" id="guardarReiniciar">Guardar y reiniciar</button>

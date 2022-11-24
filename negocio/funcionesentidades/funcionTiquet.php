@@ -31,5 +31,13 @@ function eliminarTiquet($Id_tiquet){
     $BDD->eliminarTiquet($Id_tiquet);
 }
 
+function saltarTiquet($tiquet){
+    $BDD = new accestiquet();
+    $BDD->saltarTiquet($tiquet);
+}
 
+function aceptarTiquet($tiquet){
+    $BDD = new accestiquet();
+    $BDD->aceptarTiquet($tiquet);
+}
 
