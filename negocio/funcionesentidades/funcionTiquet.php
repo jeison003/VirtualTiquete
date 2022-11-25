@@ -26,18 +26,18 @@ function crearTiquet($tiquet){
     return $newtiquete;
 }
 
-function eliminarTiquet($Id_tiquet){
+function cancelarTiquet($tiquet,$Idtiquet){
     $BDD = new accestiquet();
-    $BDD->eliminarTiquet($Id_tiquet);
+    $BDD->cancelarTiquet($tiquet,$Idtiquet);
 }
 
-function saltarTiquet($tiquet){
+function saltarTiquet($tiquet,$Idtiquet){
     $BDD = new accestiquet();
-    $BDD->saltarTiquet($tiquet);
+    $BDD->saltarTiquet($tiquet,$Idtiquet);
 }
 
-function aceptarTiquet($tiquet){
+function aceptarTiquet($tiquet,$Idtiquet){
     $BDD = new accestiquet();
-    $BDD->aceptarTiquet($tiquet);
+    $BDD->aceptarTiquet($tiquet,$Idtiquet);
 }
 

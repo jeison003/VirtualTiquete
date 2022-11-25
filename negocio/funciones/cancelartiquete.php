@@ -12,14 +12,15 @@ $id                 = $usuario->getId_usuario();
 $tiquetesUsuario    = verTiquetesPorId($id);
 $fechahoy           = date("Y-m-d");
 $tiqueteshoy        = verTiquetesPorFecha($fechahoy);
-/*
+
 foreach($tiqueteshoy as $i => $value){
-    if($tiquetesUsuario[$i]==$tiqueteshoy[$i]){
-        $idtiquete = $tiqueteshoy[$i]->getIdtiquet();
+    foreach($tiquetesUsuario as $j => $value){
+        if($tiquetesUsuario[$j]==$tiqueteshoy[$i]){
+            $tiquete = $tiqueteshoy[$i];
+            $idtiquete = $tiqueteshoy[$i]->getIdtiquet();
+        }
     }
 }
-*/
-$idtiquete = reset(array_intersect($tiquetesUsuario,$tiqueteshoy))->getIdtiquet();
 
-eliminarTiquet($idtiquete);
+cancelarTiquet($tiquete, $idtiquete);
 header("location: ../../presentacion/vistausuario.php");

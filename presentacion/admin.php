@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+
     if (!isset($_SESSION['CODIGO'])) {
         header("Location: login.php");
     }else{
@@ -47,15 +48,17 @@
             </div>
             <div class="card-body">
               <h5 class="card-title text-center text-white fs-6 fw-bold " style="background-color: #0b5386;">Codigo del
-                turno actual: <p id="codigoActual"></p>
+                turno actual:<p id="codigoActual">
+                  <?php if(isset($_SESSION['PRIMERCODIGO'])){echo $_SESSION['PRIMERCODIGO'];}else{ echo 0000;}?>;
+                </p>
               </h5>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Turno actual:</h5>
-                      <?php if(isset($_SESSION['TURNOSHOY'])){ ?>
-                       <p class="card-text fs-1 text-center" id="turnoActual"><?php echo reset($_SESSION['TURNOSHOY'])->getTurno();?></p><?php }else{?>
+                      <?php if(isset($_SESSION['PRIMERTURNO'])){ ?>
+                       <p class="card-text fs-1 text-center" id="turnoActual"><?php echo $_SESSION['PRIMERTURNO'];?></p><?php }else{?>
                        <p class="card-text fs-1 text-center" id="turnoActual">0</p><?php }?>                                                                  
                     </div>
                   </div>
@@ -65,7 +68,6 @@
                     <div class="card-body">
                       <h5 class="card-title">Total recibidos:</h5>
                       <p class="card-text fs-1 text-center" id="totalReci">0</p>
-
                     </div>
                   </div>
                 </div>
@@ -73,15 +75,21 @@
               <div class="d-grid gap-2 d-md-flex justify-content-md-center my-4 ">
 
                 <div class="col-4 d-grid gap-2 mx-auto">
-                  <button class="btn btn-success" type="button" id="recibido">Recibido</button>
+                  <form action="../negocio/funciones/aceptartiquete.php" method="post">
+                      <input name="PrimerCodigo" type="hidden" value=" <?php echo $_SESSION['PRIMERCODIGO']?>"></input>
+                      <button class="btn btn-success" type="submit" id="recibido">Recibido</button>
+                  </form>
                 </div>
                 <div class="col-4 col-4 d-grid gap-2 mx-auto">
                   <form action="../negocio/funciones/saltartiquete.php" method="post">
-                      <button class="btn btn-warning text-white" type="button" id="saltarTurno">Saltar turno </button>
-                    </form>
+                      <input name="Codigo" type="hidden" value="<?php echo $_SESSION['PRIMERCODIGO']?>"></input>
+                      <button class="btn btn-warning text-white" type="submit" id="saltarTurno">Saltar turno </button>
+                  </form>
                 </div>
                 <div class="col-4 col-4 d-grid gap-2 mx-auto">
+                <form action="../negocio/funciones/reiniciar.php">
                   <button class="btn btn-danger" type="button" id="guardarReiniciar">Guardar y reiniciar</button>
+                </form>
                 </div>
               </div>
             </div>

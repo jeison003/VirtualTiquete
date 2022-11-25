@@ -30,7 +30,7 @@ class accestiquet{
 
     public function verTiquetesPorFecha($Fecha){
         $BDD = new conexion();
-        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM tiquet WHERE fecha = ? AND Estado ",array($Fecha));
+        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM tiquet WHERE fecha = ? AND Estado = ? ",array($Fecha,'espera'));
 
         if(count($tablaResultados)!=0){
             foreach($tablaResultados as $i => $valor){
@@ -85,23 +85,28 @@ class accestiquet{
         return $resultado;
     }
 
-    public function eliminarTiquet($Id_tiquet){
+    public function cancelarTiquet($tiquet, $idTiquet){
         
         $BDD = new conexion();
-        $sql  = "DELETE FROM usuarios WHERE Id_tiquet = ?o"; 
+       
+        $resultado = $BDD->ejecutarActualizacion("DELETE FROM tiquet WHERE Id_tiquet = ?", array($idTiquet));
+        $sql = "INSERT INTO tiquet VALUES (NULL,:Id_usuario,:Turno,:Estado,:Fecha)";
+        $resultado = $BDD->ejecutarActualizacion($sql,array(
+            'Id_usuario'    => $tiquet->getIdusuario(),
+            'Turno'         => $tiquet->getTurno(),
+            'Estado'        => 'cancelado',
+            'Fecha'         => $tiquet->getFecha()
+         )
+        );
         
-        $resultado =$BDD->ejecutarActualizacion($sql , array(
-            ':Id_tiquet' => $Id_tiquet
-            )
-        ); 
+        return $resultado;
 
-      return $resultado;
     }
 
-    public function saltarTiquet($tiquet){
+    public function saltarTiquet($tiquet,$idtiquet){
         $BDD = new conexion();
         $sql = "INSERT INTO tiquet VALUES (NULL,:Id_usuario,:Turno,:Estado,:Fecha)";
-
+        $resultado = $BDD->ejecutarActualizacion("DELETE FROM tiquet WHERE Id_tiquet = ?", array($idtiquet)); 
         $resultado = $BDD->ejecutarActualizacion($sql,array(
             'Id_usuario'    => $tiquet->getIdusuario(),
             'Turno'         => $tiquet->getTurno(),
@@ -109,13 +114,16 @@ class accestiquet{
             'Fecha'         => $tiquet->getFecha()
          )
         );
+
+        
+
         return $resultado;
     }
 
-    public function aceptarTiquet($tiquet){
+    public function aceptarTiquet($tiquet,$idtiquet){
         $BDD = new conexion();
         $sql = "INSERT INTO tiquet VALUES (NULL,:Id_usuario,:Turno,:Estado,:Fecha)";
-
+       
         $resultado = $BDD->ejecutarActualizacion($sql,array(
             'Id_usuario'    => $tiquet->getIdusuario(),
             'Turno'         => $tiquet->getTurno(),
@@ -123,6 +131,9 @@ class accestiquet{
             'Fecha'         => $tiquet->getFecha()
          )
         );
+
+        $resultado = $BDD->ejecutarActualizacion("DELETE FROM tiquet WHERE Id_tiquet = ? AND Estado = ? ", array($idtiquet,'espera')); 
+
         return $resultado;
     }
 

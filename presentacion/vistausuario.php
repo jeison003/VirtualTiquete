@@ -1,12 +1,12 @@
 <?php
-
+    
     session_start();
     if (!isset($_SESSION['CODIGO'])) {
         header("Location: login.php");
     }else{
         session_destroy();
     }
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Usuario</title>
   <link rel="stylesheet" href="../presentacion/boostrap/css/bootstrap.min.css">
-  <style>
-
-  </style>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 
 <body>
@@ -51,21 +49,22 @@
               <div class="row">
                 <div class="col-sm-6">
                 <h5 class="card-title text-white">Codigo: <?php echo $_SESSION['CODIGO']; ?></h5>
+                <h5 class="card-title text-white">Hola, <?php echo $_SESSION['NOMBRE'];?>!</h5>
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Turno actual:</h5>
-                      <?php if(isset($_SESSION['TURNOSHOY'])){ ?>
-                       <p class="card-text fs-1 text-center" id="turnoActual"><?php echo reset($_SESSION['TURNOSHOY'])->getTurno();?></p><?php }else{?>
-                       <p class="card-text fs-1 text-center" id="turnoActual">0</p><?php }?>  
+                      <?php if(isset($_SESSION['PRIMERTURNO'])){ ?>
+                       <p class="card-text fs-1 text-center" id="turnoActual"><?php echo $_SESSION['PRIMERTURNO'];?></p><?php }else{?>
+                       <p class="card-text fs-1 text-center" id="turnoActual">0</p><?php }?>         
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
-                <h5 class="card-title text-white">Dias Habilitados: <?php echo ($_SESSION['DIA1']); ?> - <?php echo ($_SESSION['DIA2']);?></h5>
+                <h5 class="card-title text-white">Dias Habilitados: <?php echo ($_SESSION['DIA1']); ?> - <?php //echo ($_SESSION['DIA2']);?></h5>
                   <div class="card">
                     <div class="card-body">
                       <h5 class="card-title">Tu turno: </h5>
-                      <p class="card-text fs-1 text-center" id="turnousuario"><?php echo($_SESSION['TURNO']) ?></p>
+                      <p class="card-text fs-1 text-center" id="turnousuario"><?php echo($_SESSION['TURNO'])?></p>
                     </div>
                   </div>
                 </div>
@@ -77,7 +76,7 @@
                 <div class="col-6 d-grid gap-2 mx-auto">
                   <form action="../negocio/funciones/pedirtiquete.php" method="post">                       
                     <button class="btn btn-success"  type="submit" id="pedirturno">Pedir Turno</button>
-                    <input name="CodigoUsuario" type="hidden" value="<?php echo $_SESSION['CODIGO']?>" > 
+                    <input name="Codigo" type="hidden" value="<?php echo $_SESSION['CODIGO']?>" > 
                   </form>
                 </div> 
                   <div class="col-6 col-4 d-grid gap-2 mx-auto">                                     
@@ -87,11 +86,11 @@
                   }else{
                 ?>                            
                 <div class="col-6 d-grid gap-2 mx-auto">                                   
-                    <button class="btn btn-success" disabled="dis  type="submit" id="pedirturno">Pedir Turno</button>                    
+                    <button class="btn btn-success" disabled="disabled"  type="submit" id="pedirturno">Pedir Turno</button>                    
                 </div>     
                 <div class="col-6 d-grid gap-2 mx-auto">
                   <form action="../negocio/funciones/cancelartiquete.php" class="foract" method="post">     
-                    <input name="CodigoUsuario" type="hidden" value="<?php echo $_SESSION['CODIGO']?>" >
+                    <input name="Codigo" type="hidden" value="<?php echo $_SESSION['CODIGO']?>" >
                     <button class="btn btn-danger" type="submit" id="cancelarTurno">Cancelar Turno</button>
                   </form>
                 </div>                                        

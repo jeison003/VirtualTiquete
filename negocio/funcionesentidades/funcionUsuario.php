@@ -19,3 +19,9 @@ function BuscarUsuarioPorCodigo($Codigo){
     $usuario = $BDD->BuscarUsuarioPorCodigo($Codigo);
     return $usuario;
 }
+
+function BuscarUsuarioPorId($Id_usuario){
+    $BDD = new accessusuario();
+    $usuario = $BDD->BuscarUsuarioPorId($Id_usuario);
+    return $usuario;
+}

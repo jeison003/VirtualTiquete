@@ -6,11 +6,11 @@ require_once(__DIR__."/../funcionesentidades/funcionTiquet.php");
 require_once(__DIR__."/../funcionesentidades/funcionUsuario.php");
 require_once(__DIR__."/../../acceso_datos/entidades/Tiquet.php");
 
-$Codigo     = $_POST['CodigoUsuario'];
+$Codigo     = $_POST['Codigo'];
 $fechahoy   = date("Y-m-d");
 $usuario    = BuscarUsuarioPorCodigo($Codigo);
 $id         = $usuario->getId_usuario();
-$estado     = 'Espera';
+$estado     = 'espera';
 $tiqueteshoy= verTiquetesPorFecha($fechahoy);
 $turno = NULL;
 

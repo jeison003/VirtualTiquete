@@ -68,4 +68,22 @@ class accessusuario{
         return $usuario;
     }
 
+    public function BuscarUsuarioPorId($Id_usuario){
+        $BDD     = new conexion();
+        $usuario = NULL;
+        $tablaResultados = $BDD->ejecutarConsulta("SELECT * FROM usuario WHERE Id_usuario= ?",array($Id_usuario));
+        if(count($tablaResultados)==1){
+            $usuario = new Usuario(
+                $tablaResultados[0]["Id_usuario"],
+                $tablaResultados[0]["Codigo"],
+                $tablaResultados[0]["Contrasenia"],
+                $tablaResultados[0]["Rol"],
+                $tablaResultados[0]["Nombre"],
+                $tablaResultados[0]["Apellido"]
+            );
+        }
+        
+        return $usuario;
+    }
+
 }
